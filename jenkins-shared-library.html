@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="gl-system ui-neutral with-top-bar with-header page-with-panels with-gl-container-queries  user-logged-in with-bloom page-with-ai-panel" lang="en">
+<head prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>twn-devops-bootcamp / latest / 08_jenkins / jenkins-shared-library · GitLab</title>
+<link crossorigin="" href="https://snowplowprd.trx.gitlab.net" rel="preconnect">
+<link as="font" crossorigin="" href="/assets/gitlab-sans/GitLabSans-9892dc17af892e03de41625c0ee325117a3b8ee4ba6005f3a3eac68510030aed.woff2" rel="preload">
+<link as="font" crossorigin="" href="/assets/gitlab-sans/GitLabSans-Italic-f96f17332d67b21ada2dfba5f0c0e1d5801eab99330472057bf18edd93d4ccf7.woff2" rel="preload">
+<link as="font" crossorigin="" href="/assets/gitlab-mono/GitLabMono-29c2152dac8739499dd0fe5cd37a486ebcc7d4798c9b6d3aeab65b3172375b05.woff2" rel="preload">
+<link as="font" crossorigin="" href="/assets/gitlab-mono/GitLabMono-Italic-af36701a2188df32a9dcea12e0424c380019698d4f76da9ad8ea2fd59432cf83.woff2" rel="preload">
+
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+window.gon={};gon.math_rendering_limits_enabled=true;gon.features={"allowIframesInMarkdown":false,"markdownPlaceholders":false,"removeMonitorMetrics":true,"pageSpecificStyles":false,"blameAgentSessions":false,"duoSecretDetectionFalsePositive":true};gon.licensed_features={"remoteDevelopment":true};gon.abilities={"readCodeNavigation":false};gon.saas_features={"groupProjectPermanentDeletionConfirmation":true};gon.dedicated_features={"groupProjectPermanentDeletionConfirmation":false};
+//]]>
+</script>
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+window.uploads_path = "/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/uploads";
+
+
+
+//]]>
+</script>
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+const root = document.documentElement;
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  root.classList.add('gl-dark');
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (e.matches) {
+    root.classList.add('gl-dark');
+  } else {
+    root.classList.remove('gl-dark');
+  }
+});
+
+//]]>
+</script>
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+var gl = window.gl || {};
+gl.startup_calls = {"/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/refs/main/logs_tree/?format=json\u0026offset=0\u0026ref_type=HEADS":{}};
+gl.startup_graphql_calls = [{"query":"# @feature_category: source_code_management\nquery pathLastCommit($projectPath: ID!, $path: String, $ref: String!, $refType: RefType) {\n  project(fullPath: $projectPath) {\n    __typename\n    id\n    repository {\n      __typename\n      lastCommit(path: $path, ref: $ref, refType: $refType) {\n        __typename\n        id\n        sha\n        title\n        titleHtml\n        descriptionHtml\n        message\n        webPath\n        committerName\n        committerEmail\n        committedDate\n        authoredDate\n        authorName\n        authorEmail\n        authorGravatar\n        author {\n          __typename\n          id\n          name\n          avatarUrl\n          webPath\n        }\n        signature {\n          __typename\n          ... on GpgSignature {\n            gpgKeyPrimaryKeyid\n            verificationStatus\n          }\n          ... on X509Signature {\n            verificationStatus\n            x509Certificate {\n              id\n              subject\n              subjectKeyIdentifier\n              x509Issuer {\n                id\n                subject\n                subjectKeyIdentifier\n              }\n            }\n          }\n          ... on SshSignature {\n            verificationStatus\n            keyFingerprintSha256\n          }\n        }\n        pipelines(ref: $ref, first: 1) {\n          __typename\n          edges {\n            __typename\n            node {\n              __typename\n              id\n              detailedStatus {\n                __typename\n                id\n                detailsPath\n                icon\n                text\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n","variables":{"projectPath":"twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library","ref":"main","path":""}}];
+
+if (gl.startup_calls && window.fetch) {
+  Object.keys(gl.startup_calls).forEach(apiCall => {
+   gl.startup_calls[apiCall] = {
+      fetchCall: fetch(apiCall, {
+        // Emulate XHR for Rails AJAX request checks
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        // fetch won’t send cookies in older browsers, unless you set the credentials init option.
+        // We set to `same-origin` which is default value in modern browsers.
+        // See https://github.com/whatwg/fetch/pull/585 for more information.
+        credentials: 'same-origin'
+      })
+    };
+  });
+}
+if (gl.startup_graphql_calls && window.fetch) {
+  const headers = {"X-CSRF-Token":"Fyh_-rdgZRHMlcKV0jWIHuh2G2hCKQd5xTOnmCJOHV0xaNnKwwsVll--8F8ARqLL2zKlacpsjBX3kL06iLF85g","x-gitlab-feature-category":"groups_and_projects"};
+  const url = `https://gitlab.com/api/graphql`
+
+  const opts = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    }
+  };
+
+  gl.startup_graphql_calls = gl.startup_graphql_calls.map(call => ({
+    ...call,
+    fetchCall: fetch(url, {
+      ...opts,
+      credentials: 'same-origin',
+      body: JSON.stringify(call)
+    })
+  }))
+}
+
+
+//]]>
+</script>
+
+
+
+<meta content="light dark" name="color-scheme">
+<link rel="stylesheet" href="/assets/application-eb10dc3ef80afe32479355862648e733288b6a9bf9337e9c2d2dc72e41fbfdd5.css" media="(prefers-color-scheme: light)" />
+<link rel="stylesheet" href="/assets/application_dark-63abfdedac6dce9e100c691d5c65290621f7eadd1119c199dee1cf1861248bc8.css" media="(prefers-color-scheme: dark)" />
+<link rel="stylesheet" href="/assets/page_bundles/project-eb5d70e8f994133b3e1289ba1dd825fc58c4fe02d917a77ee741c5fb371b02d1.css" /><link rel="stylesheet" href="/assets/page_bundles/tree-58b76d142272822cde4bef9294ffe19796450435314131d59d38b8483501d591.css" /><link rel="stylesheet" href="/assets/page_bundles/commit_description-9e7efe20f0cef17d0606edabfad0418e9eb224aaeaa2dae32c817060fa60abcc.css" /><link rel="stylesheet" href="/assets/page_bundles/projects-ae0fda29f5345a932d94d7b5f6d4fdd270c3e275d80081f644bf6f9ca37bbb98.css" /><link rel="stylesheet" href="/assets/page_bundles/design_management-2a78e1525476a407e9c3eabb4b8a8a0ff3b59b68e08890b419bf006265d77b80.css" /><link rel="stylesheet" href="/assets/page_bundles/issuable_list-7a33f8b5a79c609e4bac7e1fa1c5553962adf726cd700fbead1f9e974c41e7c9.css" /><link rel="stylesheet" href="/assets/page_bundles/issues_list-1d9cdbbaf9469f9073c410dc7a7f2543b02071773aa332daf63803eaaec87e62.css" /><link rel="stylesheet" href="/assets/page_bundles/issues_show-ec954ae4932e0bfe7383adee3c75f53c5985c6edea62c7ae4370cb1f6e85a91a.css" /><link rel="stylesheet" href="/assets/page_bundles/notes_shared-a3178ba4c56d7448e82377c4b5cb5b4e6b536505f7ef9977efc391b6b54c7b00.css" /><link rel="stylesheet" href="/assets/page_bundles/work_items-608cb20c0ef1be3b7cf391701d69d9cfea9a3c10422e141892b36284d439b0f3.css" />
+<link rel="stylesheet" href="/assets/tailwind-e1f08a7e3da78b125a799b5e24d9f910b115423129435f642ae24b262c2b1f1a.css" />
+
+
+<link rel="stylesheet" href="/assets/fonts-deb7ad1d55ca77c0172d8538d53442af63604ff490c74acc2859db295c125bdb.css" />
+<link rel="stylesheet" href="/assets/highlight/themes/white-c68fe5039b0e15ae9b451d4a67dfccf087f53a6d6a5c6e552d3b18943d1c861c.css" media="(prefers-color-scheme: light)" />
+<link rel="stylesheet" href="/assets/highlight/themes/dark-b908a3c2aa81a8a7fddc7614443e8dd3cff452f4c58359cd13e7e2e1776900f6.css" media="(prefers-color-scheme: dark)" />
+
+<script src="/assets/webpack/runtime.33842028.bundle.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/framework.4443e011.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/tracker.663eadd4.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+window.snowplowOptions = {"namespace":"gl","hostname":"snowplowprd.trx.gitlab.net","cookieDomain":".gitlab.com","appId":"gitlab","formTracking":true,"linkClickTracking":true};
+gl = window.gl || {};
+gl.snowplowStandardContext = {"schema":"iglu:com.gitlab/gitlab_standard/jsonschema/1-1-8","data":{"environment":"production","source":"gitlab-rails","client_type":"browser","client_name":"safari","correlation_id":"a52bd376bcfc9383-LHR","plan":"free","extra":{},"user_id":43006070,"global_user_id":"wYWwzM9tck4VOANMK1ElxUos6svzpU3Y8ZL5b9DcCo0=","user_type":"human","is_gitlab_team_member":false,"namespace_id":142270430,"ultimate_parent_namespace_id":63750134,"project_id":86573751,"feature_enabled_by_namespace_ids":null,"realm":"saas","deployment_type":".com","instance_id":"ea8bf810-1d6f-4a6a-b4fd-93e8cbd8b57f","unique_instance_id":"b5fa1911-0638-5651-8ec4-5b892ef92e35","host_name":"gitlab.com","instance_version":"19.6.0","context_generated_at":"2026-10-30T16:34:12.060Z","organization_id":1}};
+gl.snowplowPseudonymizedPageUrl = "https://gitlab.com/namespace142270430/project86573751";
+gl.maskedDefaultReferrerUrl = null;
+gl.ga4MeasurementId = 'G-ENFH3X7M5Y';
+gl.duoEvents = ["ai_question_category","block_slack_duo_mention","perform_completion_worker","receive_slack_duo_mention","process_gitlab_duo_question","agent_platform_session_created","agent_platform_session_dropped","agent_platform_session_finished","agent_platform_session_resumed","agent_platform_session_started","agent_platform_session_stopped","ai_response_time","approve_merge_request_duo_code_review","approve_tool_duo_chat","assign_duo_suggested_reviewer","attach_file_duo_agentic_chat","cancel_session_from_session_pill","cleanup_stuck_agent_platform_session","click_ai_catalog_button_duo_rail","click_analyze_with_duo_on_analytics_dashboard","click_dap_trial_or_paid_empty_state_agent","click_dap_trial_or_paid_empty_state_explore_agents_link","click_dap_trial_or_paid_empty_state_prompt","click_delete_ai_catalog_item_button","click_disable_ai_catalog_item_button","click_duo_agentic_identity_verification_empty_state_verify_account","click_duo_agentic_not_available_empty_state_buy_credits","click_duo_agentic_not_available_empty_state_learn_more","click_duo_agentic_not_available_empty_state_learn_more_credits","click_duo_agentic_not_available_empty_state_start_trial","click_duo_agentic_subscription_expired_learn_more","click_duo_agentic_subscription_expired_upgrade","click_duo_agentic_trial_expired_learn_more","click_duo_agentic_trial_expired_upgrade","click_duo_quick_action","click_duplicate_ai_catalog_item_button","click_enable_ai_catalog_item_button","click_purchase_seats_button_group_duo_pro_home_page","click_through_flow_widget","click_through_session_pill","click_work_item_workplan_implement","close_vulnerability_resolution_merge_request","code_suggestion_accepted_in_ide","code_suggestion_rejected_in_ide","code_suggestion_shown_in_ide","code_suggestions_connection_details_rate_limit_exceeded","code_suggestions_direct_access_rate_limit_exceeded","code_suggestions_rate_limit_exceeded","complete_duo_chat_response","create_ai_catalog_item","create_ai_catalog_item_consumer","create_ai_self_hosted_model","create_duo_suggested_reviewers","create_vulnerability_resolution_merge_request","default_answer","delete_ai_catalog_item","delete_ai_catalog_item_consumer","delete_ai_self_hosted_model","deny_tool_duo_chat","dismiss_sast_vulnerability_false_positive_analysis","dismiss_secret_detection_vulnerability_false_positive_analysis","duo_workflow_workload_completed","enable_duo_code_review_by_default_marked_pending","encounter_duo_code_review_error_during_review","error_answer","excluded_files_from_duo_code_review","execute_llm_method","explain_code","explain_vulnerability","filter_ai_fp","find_no_issues_duo_code_review_after_review","find_nothing_to_review_duo_code_review_on_mr","finish_duo_workflow_execution","finish_mcp_tool_call","finish_vulnerability_bulk_duo_workflow","fix_code","fix_pipeline_suggestion_applied","fix_pipeline_suggestion_posted","generate_merge_commit_message","generate_resolve_dependency_bump_pipeline","i_quickactions_q","include_repository_xray_data_into_code_generation_prompt","ingest_ai_audit_events_batch","maximize_duo_chat_panel","mention_gitlabduo_in_mr_comment","merge_vulnerability_resolution_merge_request","minimize_duo_chat_panel","navigate_retry_alternative_duo_agentic_chat","post_comment_duo_code_review_on_diff","process_gitlab_duo_slash_command","publish_duo_code_review_comments","react_thumbs_down_on_duo_code_review_comment","react_thumbs_up_on_duo_code_review_comment","recommend_tool_duo_chat","refactor_code","reject_file_attachment_duo_agentic_chat","report_agent_platform_token_usage","report_duo_chat_token_usage","reported_sast_vulnerability_false_positive_analysis","reported_secret_detection_vulnerability_false_positive_analysis","request_ask_help","request_duo_chat_response","request_duo_vulnerability_resolution","request_review_duo_code_review_on_mr_by_author","request_review_duo_code_review_on_mr_by_non_author","resize_duo_chat_panel","resolve_feature_discovery_search","restore_ai_catalog_item","retry_duo_workflow_execution","retry_failed_duo_agentic_chat","retry_message_duo_agentic_chat","retry_succeeded_duo_agentic_chat","select_duo_agentic_chat_predefined_prompt","start_duo_workflow_execution","start_mcp_tool_call","start_vulnerability_bulk_duo_workflow","submit_dap_trial_or_paid_empty_state_message","submit_file_attachments_duo_agentic_chat","submit_gitlab_duo_question","submit_slash_command_duo_agentic_chat","summarize_new_merge_request","summarize_review","tokens_per_embedding","tokens_per_user_request_prompt","tokens_per_user_request_response","tool_failed_duo_chat","tool_succeeded_duo_chat","trigger_ai_catalog_item","trigger_resolve_dependency_bump_workflow","trigger_sast_vulnerability_fp_detection_workflow","trigger_sast_vulnerability_resolution_workflow","trigger_secret_detection_vulnerability_fp_detection_workflow","trigger_slack_duo","troubleshoot_job","update_ai_catalog_item","update_ai_catalog_item_consumer","update_ai_self_hosted_model","update_model_selection_feature","update_self_hosted_ai_feature_to_vendored_model","view_ai_catalog_item","view_ai_catalog_item_index","view_ai_catalog_project_catalog","view_ai_catalog_project_managed","view_dap_trial_or_paid_empty_state","view_duo_agentic_identity_verification_empty_state","view_duo_agentic_not_available_empty_state","view_duo_agentic_subscription_expired_empty_state","view_duo_agentic_trial_expired_empty_state","write_tests"];
+gl.onlySendDuoEvents = false;
+
+
+//]]>
+</script>
+
+
+<script src="/assets/webpack/main_shared.31aa2e73.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/sentry.552e026e.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+
+<script src="/assets/webpack/vue3_runtime.36f31df9.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/gitlab_ui.f3767b27.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/98706.e753c301.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/20949.e7d89083.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/79164.68ea6349.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/33480.c0c1f81f.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/9840.ed62a464.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/24498.a2497c76.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/6368.b30463b3.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/69313.297d54d4.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/49256.8ecfd9d6.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/super_sidebar.vue3.f248579c.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/main.bc56846e.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/55652.47759675.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/61305.1bd295f2.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/54908.d9706ee8.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/73773.56bc5f3a.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/6086.726dfdef.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/87013.cd30e32f.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/20131.f65e3231.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/3161.c12b6e99.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/13689.d38a9a74.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/49779.88e0f4d5.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/76280.2bcfd009.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/26761.2c1f8a63.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/pages.projects.show.vue3.d5c6a2a6.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+
+<meta content="object" property="og:type">
+<meta content="GitLab" property="og:site_name">
+<meta content="twn-devops-bootcamp / latest / 08_jenkins / jenkins-shared-library · GitLab" property="og:title">
+<meta content="GitLab.com" property="og:description">
+<meta content="https://gitlab.com/assets/twitter_card-570ddb06edf56a2312253c5872489847a0f385112ddbcd71ccfa1570febab5d2.jpg" property="og:image">
+<meta content="64" property="og:image:width">
+<meta content="64" property="og:image:height">
+<meta content="https://gitlab.com/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library" property="og:url">
+<meta content="summary" property="twitter:card">
+<meta content="twn-devops-bootcamp / latest / 08_jenkins / jenkins-shared-library · GitLab" property="twitter:title">
+<meta content="GitLab.com" property="twitter:description">
+<meta content="https://gitlab.com/assets/twitter_card-570ddb06edf56a2312253c5872489847a0f385112ddbcd71ccfa1570febab5d2.jpg" property="twitter:image">
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="o1Eo4zjMFj4-_Eqxef_KKtPIxtNAnQe6UJlaISNqrkeFEY7TTKdmua3XeHurjOD_4Ix40sjYjNZiOkCDiZXP_A" />
+<meta name="csp-nonce" content="Rtii6+aKzB4MkQrjf4m3Ew==" />
+<meta name="action-cable-url" content="/-/cable" />
+<link crossorigin="use-credentials" href="/-/manifest.json" rel="manifest">
+<link rel="icon" type="image/png" href="/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png" id="favicon" data-original-href="/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png" />
+<link rel="apple-touch-icon" type="image/x-icon" href="/assets/apple-touch-icon-b049d4bc0dd9626f31db825d61880737befc7835982586d015bded10b4435460.png" />
+<link crossorigin="use-credentials" href="/search/opensearch.xml" rel="search" title="Search GitLab" type="application/opensearchdescription+xml">
+<link rel="alternate" type="application/atom+xml" title="jenkins-shared-library activity" href="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library.atom?feed_token=glft-d7f2452bc1106e62428b63aecceb773940e58c84bd435b1c97dacfd9b18b53d8-43006070" />
+
+
+
+
+<meta content="GitLab.com" name="description">
+<meta content="#F1F0F6" media="(prefers-color-scheme: light)" name="theme-color">
+<meta content="#232128" media="(prefers-color-scheme: dark)" name="theme-color">
+</head>
+
+<body class="tab-width-8 gl-browser-safari gl-platform-mac" data-group="08_jenkins" data-group-full-path="twn-devops-bootcamp/latest/08_jenkins" data-namespace-id="142270430" data-page="projects:show" data-page-type-id="jenkins-shared-library" data-project="jenkins-shared-library" data-project-full-path="twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library" data-project-id="86573751">
+<div id="js-tooltips-container"></div>
+
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+gl = window.gl || {};
+gl.client = {"isSafari":true,"isMac":true};
+
+
+//]]>
+</script>
+
+
+<header class="super-topbar js-super-topbar"></header>
+<div class="layout-page js-page-layout page-with-super-sidebar">
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+const outer = document.createElement('div');
+outer.style.visibility = 'hidden';
+outer.style.overflow = 'scroll';
+document.body.appendChild(outer);
+const inner = document.createElement('div');
+outer.appendChild(inner);
+const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+outer.parentNode.removeChild(outer);
+document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+
+//]]>
+</script><aside class="js-super-sidebar super-sidebar super-sidebar-loading" data-command-palette="{&quot;project_files_url&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/files/main?format=json&quot;,&quot;project_blob_url&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/blob/main&quot;}" data-is-saas="true" data-sidebar="{&quot;whats_new_most_recent_release_items_count&quot;:6,&quot;whats_new_version_digest&quot;:&quot;553beed538e6504062d16e13f2a3cd449b8a58d17c36c1bde1f043bd3c205606&quot;,&quot;whats_new_read_articles&quot;:[],&quot;is_logged_in&quot;:true,&quot;compare_plans_url&quot;:&quot;https://about.gitlab.com/pricing&quot;,&quot;current_menu_items&quot;:[{&quot;id&quot;:&quot;project_overview&quot;,&quot;title&quot;:&quot;jenkins-shared-library&quot;,&quot;entity_id&quot;:86573751,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library&quot;,&quot;link_classes&quot;:&quot;shortcuts-project&quot;,&quot;is_active&quot;:true},{&quot;id&quot;:&quot;manage_menu&quot;,&quot;title&quot;:&quot;Manage&quot;,&quot;icon&quot;:&quot;users&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/activity&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;activity&quot;,&quot;title&quot;:&quot;Activity&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/activity&quot;,&quot;link_classes&quot;:&quot;shortcuts-project-activity&quot;,&quot;description&quot;:&quot;Track what your team is working on and stay informed of changes&quot;,&quot;library_icon&quot;:&quot;history&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;members&quot;,&quot;title&quot;:&quot;Members&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/project_members&quot;,&quot;description&quot;:&quot;Control who has access to your project and what they can do&quot;,&quot;library_icon&quot;:&quot;users&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;labels&quot;,&quot;title&quot;:&quot;Labels&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/labels&quot;,&quot;description&quot;:&quot;Organize and categorize work across your project with consistent labels&quot;,&quot;library_icon&quot;:&quot;labels&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;plan_menu&quot;,&quot;title&quot;:&quot;Plan&quot;,&quot;icon&quot;:&quot;planning&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/work_items&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;project_issue_list&quot;,&quot;title&quot;:&quot;Work items&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/work_items&quot;,&quot;link_classes&quot;:&quot;shortcuts-issues has-sub-items&quot;,&quot;pill_count_field&quot;:&quot;openWorkItemsCount&quot;,&quot;pill_count_dynamic&quot;:false,&quot;description&quot;:&quot;Plan, track, and manage work in one place&quot;,&quot;library_icon&quot;:&quot;work-items&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;boards&quot;,&quot;title&quot;:&quot;Issue boards&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/boards&quot;,&quot;link_classes&quot;:&quot;shortcuts-issue-boards&quot;,&quot;description&quot;:&quot;Visualize and manage work with kanban-style boards&quot;,&quot;library_icon&quot;:&quot;work-item-issue-board&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;milestones&quot;,&quot;title&quot;:&quot;Milestones&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/milestones&quot;,&quot;description&quot;:&quot;Plan releases and group work into time-based phases&quot;,&quot;library_icon&quot;:&quot;milestone&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;project_wiki&quot;,&quot;title&quot;:&quot;Wiki&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/wikis&quot;,&quot;link_classes&quot;:&quot;shortcuts-wiki&quot;,&quot;description&quot;:&quot;Create and manage documentation&quot;,&quot;library_icon&quot;:&quot;book&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;duo_agents_menu&quot;,&quot;title&quot;:&quot;AI&quot;,&quot;icon&quot;:&quot;tanuki-ai&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/automate/agents&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;ai_catalog_agents&quot;,&quot;title&quot;:&quot;Agents&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/automate/agents&quot;,&quot;description&quot;:&quot;Manage AI agents and flows&quot;,&quot;tier&quot;:&quot;add_on&quot;,&quot;library_icon&quot;:&quot;agent-ai&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;agents_runs&quot;,&quot;title&quot;:&quot;Sessions&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/automate/agent-sessions&quot;,&quot;description&quot;:&quot;Monitor automation session history&quot;,&quot;tier&quot;:&quot;add_on&quot;,&quot;library_icon&quot;:&quot;session-ai&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;code_menu&quot;,&quot;title&quot;:&quot;Code&quot;,&quot;icon&quot;:&quot;code&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/merge_requests&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;project_merge_request_list&quot;,&quot;title&quot;:&quot;Merge requests&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/merge_requests&quot;,&quot;link_classes&quot;:&quot;shortcuts-merge_requests&quot;,&quot;pill_count_field&quot;:&quot;openMergeRequestsCount&quot;,&quot;pill_count_dynamic&quot;:false,&quot;description&quot;:&quot;Collaborate on code changes with built-in review tools&quot;,&quot;library_icon&quot;:&quot;merge-request&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;files&quot;,&quot;title&quot;:&quot;Repository&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/tree/main&quot;,&quot;link_classes&quot;:&quot;shortcuts-tree&quot;,&quot;description&quot;:&quot;Browse and manage repository files and code&quot;,&quot;library_icon&quot;:&quot;repository&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;branches&quot;,&quot;title&quot;:&quot;Branches&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/branches&quot;,&quot;description&quot;:&quot;Manage project branches and branch protection&quot;,&quot;library_icon&quot;:&quot;branch&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;commits&quot;,&quot;title&quot;:&quot;Commits&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/commits/main?ref_type=heads&quot;,&quot;link_classes&quot;:&quot;shortcuts-commits&quot;,&quot;description&quot;:&quot;View commit history and changes&quot;,&quot;library_icon&quot;:&quot;commit&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;tags&quot;,&quot;title&quot;:&quot;Tags&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/tags&quot;,&quot;description&quot;:&quot;Create and manage release tags&quot;,&quot;library_icon&quot;:&quot;tag&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;graphs&quot;,&quot;title&quot;:&quot;Repository graph&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/network/main?ref_type=heads&quot;,&quot;link_classes&quot;:&quot;shortcuts-network&quot;,&quot;description&quot;:&quot;Visualize repository commit history and branches&quot;,&quot;library_icon&quot;:&quot;repository-graph&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;compare&quot;,&quot;title&quot;:&quot;Compare revisions&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/compare?from=main\u0026to=main&quot;,&quot;description&quot;:&quot;Compare changes between revisions&quot;,&quot;library_icon&quot;:&quot;comparison&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;project_snippets&quot;,&quot;title&quot;:&quot;Snippets&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/snippets&quot;,&quot;link_classes&quot;:&quot;shortcuts-snippets&quot;,&quot;description&quot;:&quot;Store and share code snippets&quot;,&quot;library_icon&quot;:&quot;snippet&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;build_menu&quot;,&quot;title&quot;:&quot;Build&quot;,&quot;icon&quot;:&quot;rocket&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/pipelines&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;pipelines&quot;,&quot;title&quot;:&quot;Pipelines&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/pipelines&quot;,&quot;link_classes&quot;:&quot;shortcuts-pipelines&quot;,&quot;description&quot;:&quot;Automate your build and deployment process&quot;,&quot;library_icon&quot;:&quot;pipeline&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;jobs&quot;,&quot;title&quot;:&quot;Jobs&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/jobs&quot;,&quot;link_classes&quot;:&quot;shortcuts-builds&quot;,&quot;description&quot;:&quot;Monitor individual build tasks and their results&quot;,&quot;library_icon&quot;:&quot;job&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;pipeline_schedules&quot;,&quot;title&quot;:&quot;Pipeline schedules&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/pipeline_schedules&quot;,&quot;link_classes&quot;:&quot;shortcuts-builds&quot;,&quot;description&quot;:&quot;Run your automation on a recurring schedule&quot;,&quot;library_icon&quot;:&quot;pipeline-schedule&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;artifacts&quot;,&quot;title&quot;:&quot;Artifacts&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/artifacts&quot;,&quot;link_classes&quot;:&quot;shortcuts-builds&quot;,&quot;description&quot;:&quot;Access build outputs and compiled binaries&quot;,&quot;library_icon&quot;:&quot;doc-compressed&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;deploy_menu&quot;,&quot;title&quot;:&quot;Deploy&quot;,&quot;icon&quot;:&quot;deployments&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/releases&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;releases&quot;,&quot;title&quot;:&quot;Releases&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/releases&quot;,&quot;link_classes&quot;:&quot;shortcuts-deployments-releases&quot;,&quot;description&quot;:&quot;Create and manage project releases&quot;,&quot;library_icon&quot;:&quot;release&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;packages_registry&quot;,&quot;title&quot;:&quot;Package registry&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/packages&quot;,&quot;link_classes&quot;:&quot;shortcuts-container-registry&quot;,&quot;description&quot;:&quot;Publish and share packages across your organization&quot;,&quot;library_icon&quot;:&quot;package&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;container_registry&quot;,&quot;title&quot;:&quot;Container registry&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/container_registry&quot;,&quot;description&quot;:&quot;Store and deploy container images&quot;,&quot;library_icon&quot;:&quot;container-image&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;operations_menu&quot;,&quot;title&quot;:&quot;Operate&quot;,&quot;icon&quot;:&quot;cloud-pod&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/environments&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;environments&quot;,&quot;title&quot;:&quot;Environments&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/environments&quot;,&quot;link_classes&quot;:&quot;shortcuts-environments&quot;,&quot;description&quot;:&quot;Manage your staging and production deployments&quot;,&quot;library_icon&quot;:&quot;environment&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;infrastructure_registry&quot;,&quot;title&quot;:&quot;Terraform modules&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/terraform_module_registry&quot;,&quot;description&quot;:&quot;Share and reuse infrastructure code&quot;,&quot;library_icon&quot;:&quot;infrastructure-registry&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;monitor_menu&quot;,&quot;title&quot;:&quot;Monitor&quot;,&quot;icon&quot;:&quot;monitor&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/incidents&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;incidents&quot;,&quot;title&quot;:&quot;Incidents&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/incidents&quot;,&quot;description&quot;:&quot;Manage incident response and resolution&quot;,&quot;library_icon&quot;:&quot;work-item-incident&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;service_desk&quot;,&quot;title&quot;:&quot;Service Desk&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/issues/service_desk&quot;,&quot;description&quot;:&quot;Collect customer feedback and support requests via email&quot;,&quot;library_icon&quot;:&quot;service-desk&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false},{&quot;id&quot;:&quot;analyze_menu&quot;,&quot;title&quot;:&quot;Analyze&quot;,&quot;icon&quot;:&quot;chart&quot;,&quot;avatar_shape&quot;:&quot;rect&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/value_stream_analytics&quot;,&quot;is_active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:&quot;cycle_analytics&quot;,&quot;title&quot;:&quot;Value stream analytics&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/value_stream_analytics&quot;,&quot;link_classes&quot;:&quot;shortcuts-project-cycle-analytics&quot;,&quot;description&quot;:&quot;Analyze value stream and cycle time&quot;,&quot;library_icon&quot;:&quot;value-stream-analytics&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;contributors&quot;,&quot;title&quot;:&quot;Contributor analytics&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/graphs/main?ref_type=heads&quot;,&quot;description&quot;:&quot;Track and view member contributions and activity&quot;,&quot;library_icon&quot;:&quot;contributor-analytics&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;ci_cd_analytics&quot;,&quot;title&quot;:&quot;CI/CD analytics&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/pipelines/charts&quot;,&quot;description&quot;:&quot;Analyze CI/CD pipeline metrics and performance&quot;,&quot;library_icon&quot;:&quot;cicd-analytics&quot;,&quot;is_active&quot;:false},{&quot;id&quot;:&quot;repository_analytics&quot;,&quot;title&quot;:&quot;Repository analytics&quot;,&quot;link&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/graphs/main/charts&quot;,&quot;link_classes&quot;:&quot;shortcuts-repository-charts&quot;,&quot;description&quot;:&quot;Analyze repository coverage, statistics, and metrics&quot;,&quot;library_icon&quot;:&quot;repository-analytics&quot;,&quot;is_active&quot;:false}],&quot;separated&quot;:false}],&quot;current_context_header&quot;:&quot;Project&quot;,&quot;support_path&quot;:&quot;https://support.gitlab.com&quot;,&quot;display_whats_new&quot;:true,&quot;show_version_check&quot;:false,&quot;search&quot;:{&quot;search_context&quot;:{&quot;group&quot;:{&quot;id&quot;:142270430,&quot;name&quot;:&quot;08_jenkins&quot;,&quot;full_name&quot;:&quot;twn-devops-bootcamp / latest / 08_jenkins&quot;},&quot;group_metadata&quot;:{&quot;issues_path&quot;:&quot;/groups/twn-devops-bootcamp/latest/08_jenkins/-/issues&quot;,&quot;mr_path&quot;:&quot;/groups/twn-devops-bootcamp/latest/08_jenkins/-/merge_requests?assignee_username=Ryans-cloud-lab&quot;},&quot;project&quot;:{&quot;id&quot;:86573751,&quot;name&quot;:&quot;jenkins-shared-library&quot;},&quot;project_metadata&quot;:{&quot;mr_path&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/merge_requests?assignee_username=Ryans-cloud-lab&quot;,&quot;issues_path&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/issues&quot;},&quot;code_search&quot;:true,&quot;ref&quot;:&quot;main&quot;,&quot;scope&quot;:null,&quot;for_snippets&quot;:null}},&quot;panel_type&quot;:&quot;project&quot;,&quot;shortcut_links&quot;:[{&quot;title&quot;:&quot;Milestones&quot;,&quot;href&quot;:&quot;/dashboard/milestones&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-milestones&quot;},{&quot;title&quot;:&quot;Snippets&quot;,&quot;href&quot;:&quot;/dashboard/snippets&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-snippets&quot;},{&quot;title&quot;:&quot;Activity&quot;,&quot;href&quot;:&quot;/dashboard/activity&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-activity&quot;},{&quot;title&quot;:&quot;Groups&quot;,&quot;href&quot;:&quot;/dashboard/groups&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-groups&quot;},{&quot;title&quot;:&quot;Projects&quot;,&quot;href&quot;:&quot;/dashboard/projects&quot;,&quot;css_class&quot;:&quot;dashboard-shortcuts-projects&quot;},{&quot;title&quot;:&quot;Create a new issue&quot;,&quot;href&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/issues/new&quot;,&quot;css_class&quot;:&quot;shortcuts-new-issue&quot;}],&quot;has_terms&quot;:true,&quot;is_admin&quot;:false,&quot;name&quot;:&quot;Ryan Kunaka&quot;,&quot;username&quot;:&quot;Ryans-cloud-lab&quot;,&quot;admin_mode&quot;:{&quot;admin_mode_feature_enabled&quot;:false,&quot;admin_mode_active&quot;:false,&quot;user_is_admin&quot;:false},&quot;avatar_url&quot;:&quot;https://secure.gravatar.com/avatar/6d4a109aeb0bfe0a5431a89cbf4d4e4990993c7f97c099e9076ecd558691d742?s=80\u0026d=identicon&quot;,&quot;logo_url&quot;:null,&quot;status&quot;:{&quot;can_update&quot;:true,&quot;busy&quot;:null,&quot;customized&quot;:null,&quot;availability&quot;:&quot;&quot;,&quot;emoji&quot;:null,&quot;message_html&quot;:null,&quot;message&quot;:null,&quot;clear_after&quot;:null},&quot;user_counts&quot;:{&quot;assigned_issues&quot;:0,&quot;assigned_merge_requests&quot;:0,&quot;review_requested_merge_requests&quot;:0,&quot;todos&quot;:0,&quot;last_update&quot;:1793378052119},&quot;create_new_menu_groups&quot;:[{&quot;name&quot;:&quot;In this project&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;New work item&quot;,&quot;href&quot;:null,&quot;component&quot;:&quot;create_new_work_item_modal&quot;,&quot;extraAttrs&quot;:{&quot;data-track-label&quot;:&quot;new_work_item&quot;,&quot;data-track-action&quot;:&quot;click_link&quot;,&quot;data-track-property&quot;:&quot;nav_create_menu&quot;,&quot;data-testid&quot;:&quot;create_menu_item&quot;,&quot;data-qa-create-menu-item&quot;:&quot;new_work_item&quot;}}]},{&quot;name&quot;:&quot;In GitLab&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;New project/repository&quot;,&quot;href&quot;:&quot;/projects/new&quot;,&quot;component&quot;:null,&quot;extraAttrs&quot;:{&quot;data-track-label&quot;:&quot;general_new_project&quot;,&quot;data-track-action&quot;:&quot;click_link&quot;,&quot;data-track-property&quot;:&quot;nav_create_menu&quot;,&quot;data-testid&quot;:&quot;create_menu_item&quot;,&quot;data-qa-create-menu-item&quot;:&quot;general_new_project&quot;}},{&quot;text&quot;:&quot;New group&quot;,&quot;href&quot;:&quot;/groups/new&quot;,&quot;component&quot;:null,&quot;extraAttrs&quot;:{&quot;data-track-label&quot;:&quot;general_new_group&quot;,&quot;data-track-action&quot;:&quot;click_link&quot;,&quot;data-track-property&quot;:&quot;nav_create_menu&quot;,&quot;data-testid&quot;:&quot;create_menu_item&quot;,&quot;data-qa-create-menu-item&quot;:&quot;general_new_group&quot;}},{&quot;text&quot;:&quot;New snippet&quot;,&quot;href&quot;:&quot;/-/snippets/new&quot;,&quot;component&quot;:null,&quot;extraAttrs&quot;:{&quot;data-track-label&quot;:&quot;general_new_snippet&quot;,&quot;data-track-action&quot;:&quot;click_link&quot;,&quot;data-track-property&quot;:&quot;nav_create_menu&quot;,&quot;data-testid&quot;:&quot;create_menu_item&quot;,&quot;data-qa-create-menu-item&quot;:&quot;general_new_snippet&quot;}}]}],&quot;gitlab_com_and_canary&quot;:null,&quot;current_context&quot;:{&quot;namespace&quot;:&quot;projects&quot;,&quot;item&quot;:{&quot;id&quot;:86573751,&quot;name&quot;:&quot;jenkins-shared-library&quot;,&quot;namespace&quot;:&quot;twn-devops-bootcamp / latest / 08_jenkins / jenkins-shared-library&quot;,&quot;fullPath&quot;:&quot;twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library&quot;,&quot;webUrl&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library&quot;,&quot;avatarUrl&quot;:null}},&quot;pinned_items&quot;:[&quot;project_overview&quot;,&quot;members&quot;,&quot;project_issue_list&quot;,&quot;branches&quot;,&quot;project_merge_request_list&quot;,&quot;pipelines&quot;],&quot;sidebar_navigation_mode&quot;:&quot;compact&quot;,&quot;is_impersonating&quot;:false,&quot;work_items&quot;:{&quot;full_path&quot;:&quot;twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library&quot;},&quot;has_multiple_organizations&quot;:false,&quot;show_feature_library_shimmer&quot;:true,&quot;ai_search_available&quot;:false,&quot;explore_pages_available&quot;:false,&quot;manage_organization_link&quot;:null,&quot;show_tailored_navigation_onboarding&quot;:false}"></aside>
+
+<div class="broadcast-wrapper gl-rounded-lg gl-overflow-hidden">
+
+
+
+</div>
+<div class="panels-container gl-flex gl-gap-3">
+<div class="content-panels gl-flex-1 gl-w-full gl-flex gl-gap-0 gl-relative js-content-panels gl-@container/content-panels">
+<div class="paneled-view static-panel js-static-panel js-paneled-view content-wrapper">
+<div class="panel-header">
+<div class="panel-header-inner js-panel-header-inner">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"twn-devops-bootcamp","item":"https://gitlab.com/twn-devops-bootcamp"},{"@type":"ListItem","position":2,"name":"latest","item":"https://gitlab.com/twn-devops-bootcamp/latest"},{"@type":"ListItem","position":3,"name":"08_jenkins","item":"https://gitlab.com/twn-devops-bootcamp/latest/08_jenkins"},{"@type":"ListItem","position":4,"name":"jenkins-shared-library","item":"https://gitlab.com/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library"}]}
+
+
+</script>
+<div data-testid="breadcrumb-links" id="js-vue-page-breadcrumbs-wrapper">
+<div data-breadcrumbs-json="[{&quot;text&quot;:&quot;twn-devops-bootcamp&quot;,&quot;href&quot;:&quot;/twn-devops-bootcamp&quot;,&quot;avatarPath&quot;:&quot;/uploads/-/system/group/avatar/63750134/Digital_Badge_Designs.png?v=1727616171&quot;},{&quot;text&quot;:&quot;latest&quot;,&quot;href&quot;:&quot;/twn-devops-bootcamp/latest&quot;,&quot;avatarPath&quot;:null},{&quot;text&quot;:&quot;08_jenkins&quot;,&quot;href&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins&quot;,&quot;avatarPath&quot;:null},{&quot;text&quot;:&quot;jenkins-shared-library&quot;,&quot;href&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library&quot;,&quot;avatarPath&quot;:null}]" id="js-vue-page-breadcrumbs"></div>
+<div id="js-injected-page-breadcrumbs"></div>
+</div>
+<div id="js-page-breadcrumbs-extra"></div>
+
+
+
+<div class="panel-header-inner-actions">
+<div class="js-show-on-project-root">
+<div data-can-fork-project="true" data-can-read-code="true" data-can-read-project="true" data-can-request-access="true" data-can-withdraw-access-request="false" data-dashboard-path="/dashboard/projects" data-emails-disabled="false" data-forks-count="0" data-is-project-empty="false" data-new-fork-url="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/forks/new" data-notification-dropdown-items="[&quot;global&quot;,&quot;watch&quot;,&quot;participating&quot;,&quot;mention&quot;,&quot;disabled&quot;]" data-notification-help-page-path="/help/user/profile/notifications.md" data-notification-level="global" data-project-forks-url="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/forks" data-project-full-path="twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library" data-project-id="86573751" data-request-access-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/project_members/request_access" data-sign-in-path="/users/sign_in?redirect_to_referer=yes" data-star-count="0" data-starred="false" data-starrers-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/starrers" data-withdraw-access-request-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/project_members/leave" id="js-home-panel"></div>
+</div>
+
+
+<div class="panel-header-inner-actions-portal-target js-panel-actions-portal-target"></div>
+</div>
+</div>
+</div>
+<div class="panel-content">
+<div class="panel-content-inner js-static-panel-inner">
+<div class="alert-wrapper alert-wrapper-top-space gl-flex gl-flex-col gl-gap-3 container-fluid container-limited">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="container-fluid container-limited project-highlight-puc">
+<main class="content gl-@container/panel" id="content-body" itemscope itemtype="http://schema.org/SoftwareSourceCode">
+<div id="js-drawer-container"></div>
+<div class="flash-container flash-container-page sticky" data-testid="flash-container">
+<div id="js-global-alerts"></div>
+</div>
+
+
+
+<div class="js-hand-raise-lead-modal" data-submit-path="/-/gitlab_subscriptions/hand_raise_leads" data-user="{&quot;namespace_id&quot;:63750134,&quot;user_name&quot;:&quot;Ryans-cloud-lab&quot;,&quot;first_name&quot;:&quot;Ryan&quot;,&quot;last_name&quot;:&quot;Kunaka&quot;,&quot;company_name&quot;:&quot;&quot;}"></div>
+
+
+
+
+
+
+
+
+<div class="gl-base-layout project-home-layout">
+<header class="gl-flex gl-flex-wrap gl-items-center gl-justify-between gl-gap-y-3 gl-mt-2 gl-mb-5">
+<div class="gl-flex gl-flex-wrap gl-justify-between gl-gap-x-5 gl-gap-y-3 gl-w-full @md/panel:gl-flex-nowrap">
+<h1 class="gl-heading-1 !gl-m-0" data-testid="page-heading">
+<span class="gl-flex gl-items-center gl-gap-4 gl-pt-2 -gl-mb-5">
+<div aria-hidden="true" class="gl-avatar gl-avatar-s48 gl-font-normal gl-self-start gl-shrink-0 gl-avatar-identicon gl-avatar-identicon-bg6" itemprop="image">
+J
+</div>
+
+<span class="gl-flex gl-items-center gl-flex-wrap gl-gap-x-3 gl-gap-y-1 gl-break-anywhere">
+<span data-testid="project-name-content" itemprop="name">jenkins-shared-library</span>
+<button class="has-tooltip gl-border-0 gl-bg-transparent gl-p-0 gl-leading-0 gl-text-inherit visibility-icon gl-inline-flex" data-container="body" data-placement="top" title="Public - The project can be accessed without any authentication." type="button" aria-label="Public - The project can be accessed without any authentication."><svg class="s16 gl-fill-icon-subtle" data-testid="earth-icon"><use href="/assets/icons-9e15b4326314733309933b50748c4a8bd745613ff01a7aa1136499f9228ffcf6.svg#earth"></use></svg></button>
+
+
+</span>
+</span>
+
+
+
+
+</h1>
+</div>
+</header>
+<div data-testid="base-layout-content">
+<div class="gl-detail-layout-container gl-detail-layout-container-has-sidebar" data-testid="detail-layout-container">
+<div class="gl-detail-layout-sidebar" data-testid="detail-layout-sidebar">
+<div class="project-home-sidebar js-show-on-project-root">
+<aside class="project-page-sidebar" data-testid="project-page-sidebar">
+<div class="project-page-sidebar-block home-panel-home-desc gl-py-4 gl-border-b gl-border-b-subtle">
+<h2 class="gl-text-base gl-font-bold gl-leading-reset gl-text-heading gl-m-0 gl-mb-1">Project information</h2>
+<span class="gl-sr-only" data-testid="project-id-content" itemprop="identifier">Project ID: 86573751</span>
+<div class="gl-mb-2 gl-mt-3">
+<div class="progress repository-languages-bar js-show-on-project-root"><div class="progress-bar has-tooltip" style="width: 100.0%; background-color:#4298b8" data-html="true" title="&lt;span class=&quot;repository-language-bar-tooltip-language&quot;&gt;Groovy&lt;/span&gt;&amp;nbsp;&lt;span class=&quot;repository-language-bar-tooltip-share&quot;&gt;100.0%&lt;/span&gt;"></div></div>
+</div>
+</div>
+<div class="project-page-sidebar-block gl-py-4 gl-border-b gl-border-b-subtle">
+<nav class="project-stats">
+<ul class="nav gl-gap-y-2 gl-gap-x-5">
+<li class="nav-item gl-leading-1">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2" href="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/commits/main"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="commit-icon"><use href="/assets/icons-9e15b4326314733309933b50748c4a8bd745613ff01a7aa1136499f9228ffcf6.svg#commit"></use></svg><strong class="project-stat-value">4</strong> Commits</a>
+</li>
+<li class="nav-item gl-leading-1">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2" href="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/branches"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="branch-icon"><use href="/assets/icons-9e15b4326314733309933b50748c4a8bd745613ff01a7aa1136499f9228ffcf6.svg#branch"></use></svg><strong class="project-stat-value">1</strong> Branch</a>
+</li>
+<li class="nav-item gl-leading-1">
+<a class="nav-link stat-link !gl-px-0 !gl-pb-2" href="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/tags"><svg class="s16 gl-fill-icon-subtle gl-mr-3" data-testid="label-icon"><use href="/assets/icons-9e15b4326314733309933b50748c4a8bd745613ff01a7aa1136499f9228ffcf6.svg#label"></use></svg><strong class="project-stat-value">0</strong> Tags</a>
+</li>
+</ul>
+
+</nav>
+</div>
+
+
+<div class="project-page-sidebar-block gl-pt-4">
+<p class="gl-font-bold gl-text-strong gl-m-0 gl-mb-1">Created on</p>
+<span>September 17, 2026</span>
+</div>
+</aside>
+
+</div>
+
+</div>
+<div class="gl-detail-layout-content" data-testid="detail-layout-content">
+<div class="project-show-files">
+<div class="gl-flex navigation-root">
+<div id="js-file-browser" style=""></div>
+<div class="gl-w-full gl-min-w-0">
+<div class="tree-holder gl-clearfix gl-flex gl-flex-col gl-gap-5" id="tree-holder">
+<div data-breadcrumbs-can-collaborate="false" data-breadcrumbs-can-edit-tree="false" data-breadcrumbs-can-push-code="false" data-breadcrumbs-can-push-to-branch="false" data-breadcrumbs-fork-new-blob-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/forks?continue%5Bnotice%5D=You%27re+not+allowed+to+make+changes+to+this+project+directly.+A+fork+of+this+project+has+been+created+that+you+can+make+changes+in%2C+so+you+can+submit+a+merge+request.&amp;continue%5Bnotice_now%5D=You%27re+not+allowed+to+make+changes+to+this+project+directly.+A+fork+of+this+project+is+being+created+that+you+can+make+changes+in%2C+so+you+can+submit+a+merge+request.&amp;continue%5Bto%5D=%2Ftwn-devops-bootcamp%2Flatest%2F08_jenkins%2Fjenkins-shared-library%2F-%2Fnew%2Fmain&amp;namespace_key=143860471" data-breadcrumbs-fork-new-directory-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/forks?continue%5Bnotice%5D=You%27re+not+allowed+to+make+changes+to+this+project+directly.+A+fork+of+this+project+has+been+created+that+you+can+make+changes+in%2C+so+you+can+submit+a+merge+request.+Try+to+create+a+new+directory+again.&amp;continue%5Bnotice_now%5D=You%27re+not+allowed+to+make+changes+to+this+project+directly.+A+fork+of+this+project+is+being+created+that+you+can+make+changes+in%2C+so+you+can+submit+a+merge+request.&amp;continue%5Bto%5D=%2Ftwn-devops-bootcamp%2Flatest%2F08_jenkins%2Fjenkins-shared-library&amp;namespace_key=143860471" data-breadcrumbs-fork-upload-blob-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/forks?continue%5Bnotice%5D=You%27re+not+allowed+to+make+changes+to+this+project+directly.+A+fork+of+this+project+has+been+created+that+you+can+make+changes+in%2C+so+you+can+submit+a+merge+request.+Try+to+upload+a+file+again.&amp;continue%5Bnotice_now%5D=You%27re+not+allowed+to+make+changes+to+this+project+directly.+A+fork+of+this+project+is+being+created+that+you+can+make+changes+in%2C+so+you+can+submit+a+merge+request.&amp;continue%5Bto%5D=%2Ftwn-devops-bootcamp%2Flatest%2F08_jenkins%2Fjenkins-shared-library&amp;namespace_key=143860471" data-breadcrumbs-new-blob-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/new/main" data-breadcrumbs-new-branch-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/branches/new" data-breadcrumbs-new-dir-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/create_dir/main" data-breadcrumbs-new-tag-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/tags/new" data-breadcrumbs-upload-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/create/main" data-custom-code-dropdown-clients="[]" data-download-links="[{&quot;text&quot;:&quot;zip&quot;,&quot;path&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/archive/main/jenkins-shared-library-main.zip?ref_type=heads&quot;},{&quot;text&quot;:&quot;tar.gz&quot;,&quot;path&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/archive/main/jenkins-shared-library-main.tar.gz?ref_type=heads&quot;},{&quot;text&quot;:&quot;tar.bz2&quot;,&quot;path&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/archive/main/jenkins-shared-library-main.tar.bz2?ref_type=heads&quot;},{&quot;text&quot;:&quot;tar&quot;,&quot;path&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/archive/main/jenkins-shared-library-main.tar?ref_type=heads&quot;}]" data-escaped-ref="main" data-http-url="https://gitlab.com/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library.git" data-kerberos-url="" data-new-workspace-path="/-/remote_development/workspaces/new" data-organization-id="1" data-project-id="86573751" data-project-path="twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library" data-project-root-path="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library" data-ref="main" data-ref-type="heads" data-root-ref="main" data-show-no-ssh-key-message="true" data-ssh-url="git@gitlab.com:twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library.git" data-user-settings-ssh-keys-path="/-/user_settings/ssh_keys" data-web-ide-button-options="{&quot;is_fork&quot;:false,&quot;needs_to_fork&quot;:true,&quot;gitpod_enabled&quot;:false,&quot;is_blob&quot;:false,&quot;show_edit_button&quot;:false,&quot;show_web_ide_button&quot;:true,&quot;show_gitpod_button&quot;:true,&quot;show_pipeline_editor_button&quot;:false,&quot;web_ide_url&quot;:&quot;/-/ide/project/Ryans-cloud-lab/jenkins-shared-library/edit/main&quot;,&quot;edit_url&quot;:&quot;&quot;,&quot;pipeline_editor_url&quot;:&quot;/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/ci/editor?branch_name=main&quot;,&quot;gitpod_url&quot;:&quot;https://gitpod.io/#https://gitlab.com/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/tree/main/&quot;,&quot;user_preferences_gitpod_path&quot;:&quot;/-/profile/preferences#user_gitpod_enabled&quot;,&quot;user_profile_enable_gitpod_path&quot;:&quot;/-/user_settings/profile?user%5Bgitpod_enabled%5D=true&quot;}" data-xcode-url="" id="js-repository-blob-header-app"></div>
+<div class="gl-bg-subtle gl-border gl-rounded-lg gl-overflow-clip">
+<div class="gl-flex gl-items-center gl-justify-center gl-m-auto" data-history-link="/twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library/-/commits/main" data-ref-type="heads" id="js-last-commit">
+<div aria-hidden="true" class="gl-flex gl-grow gl-items-center gl-gap-3 gl-p-4">
+<div class="gl-animate-skeleton-loader gl-h-7 gl-w-7 gl-shrink-0 gl-rounded-full"></div>
+<div class="gl-flex gl-grow gl-flex-col gl-gap-2">
+<div class="gl-animate-skeleton-loader gl-h-4 gl-w-30 gl-max-w-full gl-rounded-default"></div>
+<div class="gl-animate-skeleton-loader gl-h-3 gl-w-20 gl-max-w-full gl-rounded-default"></div>
+</div>
+</div>
+</div>
+</div>
+<div data-can-download-code="true" data-escaped-ref="main" data-explain-code-available="false" data-full-name="twn-devops-bootcamp / latest / 08_jenkins / jenkins-shared-library" data-has-revs-file="false" data-project-path="twn-devops-bootcamp/latest/08_jenkins/jenkins-shared-library" data-project-short-path="jenkins-shared-library" data-ref="main" data-ref-type="heads" data-resource-id="gid://gitlab/Project/86573751" id="js-tree-list"></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+</main>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
+<div class="paneled-view-portal" id="contextual-panel-portal"></div>
+</div>
+</div>
+<div class="duo-chat-panel" data-access-denied="true" data-auto-expand="false" data-container-type="project" data-testid="duo-chat-panel-access-denied" id="duo-chat-panel"></div>
+
+
+<script src="/assets/webpack/26189.08318069.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/13642.0eec79ad.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/88413.411f684b.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/56416.5740ea6e.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/82540.539608e2.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/89893.7a1457a8.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/74744.1b5886c9.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/14584.a3645bda.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/919.42378de0.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/59629.e50b7f32.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+<script src="/assets/webpack/duo_panel.vue3.6c4ac5b4.chunk.js" defer="defer" nonce="Rtii6+aKzB4MkQrjf4m3Ew=="></script>
+
+</div>
+
+
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+if ('loading' in HTMLImageElement.prototype) {
+  document.querySelectorAll('img.lazy').forEach(img => {
+    img.loading = 'lazy';
+    let imgUrl = img.dataset.src;
+    // Only adding width + height for avatars for now
+    // Keep this logic in sync with appendWidthToAvatarUrl in
+    // app/assets/javascripts/vue_shared/components/user_avatar/utils.js
+    if (imgUrl.indexOf('/avatar/') > -1 && !imgUrl.includes('width=')) {
+      const targetWidth = img.getAttribute('width') || img.width;
+      imgUrl += imgUrl.includes('?') ? `&width=${targetWidth}` : `?width=${targetWidth}`;
+    }
+    img.src = imgUrl;
+    img.removeAttribute('data-src');
+    img.classList.remove('lazy');
+    img.classList.add('js-lazy-loaded');
+    img.dataset.testid = 'js-lazy-loaded-content';
+  });
+}
+
+//]]>
+</script>
+<script nonce="Rtii6+aKzB4MkQrjf4m3Ew==">
+//<![CDATA[
+gl = window.gl || {};
+gl.experiments = {};
+
+
+//]]>
+</script>
+
+</body>
+</html>
+
