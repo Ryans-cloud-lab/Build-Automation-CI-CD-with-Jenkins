@@ -68,7 +68,7 @@ On branch **`main`**, multiple files document the course progression without rep
 | File | Illustrates |
 |------|-------------|
 | [Jenkinsfile](./java-maven-app/Jenkinsfile) | Full CI pipeline with versioning (evolved alongside `jenkins-jobs`) |
-| [Jenkinsfile-pipeline](./java-maven-app/Jenkins-pipeline) | Declarative Pipeline loading [script.groovy](./java-maven-app/script.groovy) for build / image / deploy |
+| [Jenkinsfile-pipeline](./java-maven-app/Jenkins-Pipeline) | Declarative Pipeline loading [script.groovy](./java-maven-app/script.groovy) for build / image / deploy |
 | [Jenkinsfile-syntax](./java-maven-app/Jenkinsfile-syntax) | Parameters, `when` conditions, and user **input** for environment selection |
 | Embedded `jenkins-shared-library/` (on `main` only) | Local copy of shared library structure while learning |
 
