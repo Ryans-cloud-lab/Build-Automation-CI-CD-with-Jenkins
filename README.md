@@ -48,3 +48,15 @@ Before reproducing this project on a new Jenkins server or cloning for local dev
 - **Docker** made available to the Jenkins container through the host's Docker socket, so pipelines can build and push images
 - **Maven** configured as a Jenkins-managed tool; Node.js and npm installed inside the container
 - ###### Port 8080 open in the DigitalOcean firewall for the Jenkins UI and GitHub webhooks
+
+### CI pipeline (end state on `jenkins-jobs`)
+
+The active pipeline in [java-maven-app/Jenkinsfile](./java-maven-app/Jenkinsfile) on branch **`jenkins-jobs`** runs these stages:
+
+| Stage | Purpose |
+|-------|---------|
+| **increment version** | Bump the Maven **patch** version in `pom.xml` using `build-helper:parse-version` and `versions:set`; derive `IMAGE_NAME` as `{version}-{BUILD_NUMBER}` |
+| **build app** | `mvn clean package` — compile, test, and produce the executable JAR |
+| **build image** | `docker build`, `docker login`, `docker push` to **Docker Hub** (`ronkaiser86/demo-app:${IMAGE_NAME}`) |
+| **deploy** | Placeholder stage (deployment to a remote host is extended in later modules) |
+| **commit version update** | Commit the updated `pom.xml` and push back to Git so the repo records the new version |
