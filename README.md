@@ -37,3 +37,14 @@ Before reproducing this project on a new Jenkins server or cloning for local dev
 - Jenkins **credentials** (Global scope): `docker-hub-repo`, `github-pat-devops-08` (and `github-credentials` on some branches)—see [Jenkins configuration](#jenkins-configuration-checklist) below
 
 **Example application:** [java-maven-app](./java-maven-app/)
+---
+
+## What was implemented
+
+### Infrastructure
+
+- **Jenkins** running as a Docker container (jenkins/jenkins:lts) on an Ubuntu droplet on DigitalOcean, with Jenkins home on a named volume so jobs, -plugins and credentials survive container restarts
+- **Restart policy** unless-stopped, so Jenkins comes back on its own after a plugin restart or a server reboot
+- **Docker** made available to the Jenkins container through the host's Docker socket, so pipelines can build and push images
+- **Maven** configured as a Jenkins-managed tool; Node.js and npm installed inside the container
+- ###### Port 8080 open in the DigitalOcean firewall for the Jenkins UI and GitHub webhooks
