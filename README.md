@@ -18,7 +18,7 @@
 ---
 
 ## Description
-This repository contains a Java Maven application (java-maven-app) with a Jenkinsfile that versions, builds, containerises and publishes it along with a Jenkins Shared Library [jenkins-shared-library](https://github.com/Ryans-cloud-lab/jenkins-shared-library) with reusable build steps.
+This repository contains a Java Maven application (java-maven-app) with a Jenkinsfile that versions, builds, containerises and publishes it along with a Jenkins Shared Library [jenkins-shared-library](jenkins-shared-library) with reusable build steps.
 
 The setup mirrors a typical company workflow: a dedicated Jenkins server, credentials for external systems kept in Jenkins, pipeline as code in Git, images published to a registry, and builds triggered automatically by code changes.
 
