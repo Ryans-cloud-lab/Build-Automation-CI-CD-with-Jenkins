@@ -60,3 +60,18 @@ The active pipeline in [java-maven-app/Jenkinsfile](./java-maven-app/Jenkinsfile
 | **build image** | `docker build`, `docker login`, `docker push` to **Docker Hub** (`ronkaiser86/demo-app:${IMAGE_NAME}`) |
 | **deploy** | Placeholder stage (deployment to a remote host is extended in later modules) |
 | **commit version update** | Commit the updated `pom.xml` and push back to Git so the repo records the new version |
+
+### Jenkins job types and learning artifacts
+
+On branch **`main`**, multiple files document the course progression without replacing the live pipeline on `jenkins-jobs`:
+
+| File | Illustrates |
+|------|-------------|
+| [Jenkinsfile](./java-maven-app/Jenkinsfile) | Full CI pipeline with versioning (evolved alongside `jenkins-jobs`) |
+| [Jenkinsfile-pipeline](./java-maven-app/Jenkinsfile-pipeline) | Declarative Pipeline loading [script.groovy](./java-maven-app/script.groovy) for build / image / deploy |
+| [Jenkinsfile-syntax](./java-maven-app/Jenkinsfile-syntax) | Parameters, `when` conditions, and user **input** for environment selection |
+| Embedded `jenkins-shared-library/` (on `main` only) | Local copy of shared library structure while learning |
+
+Branch **`jenkins-shared-lib`** wires the external shared library into the Pipeline (`buildJar()`, `dockerLogin()`, `dockerPush()`, etc.).
+
+Branch **`feature/payment`** supports **Multibranch Pipeline** demos (separate branch for branch-specific behavior).
