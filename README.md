@@ -22,7 +22,7 @@ This repository contains a Java Maven application (java-maven-app) with a Jenkin
 
 The setup mirrors a typical company workflow: a dedicated Jenkins server, credentials for external systems kept in Jenkins, pipeline as code in Git, images published to a registry, and builds triggered automatically by code changes.
 
-The sample application and starting pipeline come from the bootcamp. I set up the Jenkins server, adapted the pipeline and shared library to my own accounts and repository layout, and documented the problems I solved along the way.
+I set up the Jenkins server, adapted the pipeline and shared library to my own accounts and repository layout, and documented the problems I solved along the way.
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ On branch **`main`**, multiple files document the course progression without rep
 |------|-------------|
 | [Jenkinsfile](./java-maven-app/Jenkinsfile) | Full CI pipeline with versioning (evolved alongside `jenkins-jobs`) |
 | [Jenkinsfile-pipeline](./java-maven-app/Jenkinsfile-pipeline) | Declarative Pipeline loading [script.groovy](./java-maven-app/script.groovy) for build / image / deploy |
-| [Jenkinsfile-syntax](./java-maven-app/Jenkinsfile-syntax) | Parameters, `when` conditions, and user **input** for environment selection |
+| [Jenkinsfile-syntax](./java-maven-app/Jenkinsfile-syntax) | Parameters, `when` conditions and user **input** for environment selection |
 | Embedded `jenkins-shared-library/` (on `main` only) | Local copy of shared library structure while learning |
 
 Branch **`jenkins-shared-lib`** wires the external shared library into the Pipeline (`buildJar()`, `dockerLogin()`, `dockerPush()`, etc.).
@@ -112,10 +112,7 @@ devops-08-automation-ci-cd-with-jenkins/
 │   ├── Jenkinsfile             # Pipeline definition (branch-dependent)
 │   ├── Jenkinsfile-pipeline    # Pipeline + script.groovy (main)
 │   ├── Jenkinsfile-syntax      # Parameters, when, input (main)
-│   ├── Jenkinsfile-condition   # Branch conditions (main)
 │   └── script.groovy           # Local Groovy helpers (buildJar, buildImage, …)
-├── freestyle-build.sh          # Freestyle job helper (repo root on jenkins-jobs)
-└── nodesource_setup.sh         # Optional Node.js setup on the agent
 ```
 
 The Docker image is built from [java-maven-app/Dockerfile](./java-maven-app/Dockerfile) after `mvn package` produces the JAR under `target/`.
@@ -195,3 +192,10 @@ java -jar target/java-maven-app-*.jar
 ```
 
 ---
+## References
+
+- README structure guidance: [Make a README](https://www.makeareadme.com/)
+- Jenkins: [Pipeline](https://www.jenkins.io/doc/book/pipeline/), [Shared Libraries](https://www.jenkins.io/doc/book/pipeline/shared-libraries/), [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/)
+- GitHub: [Managing personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+- Docker: [docker build](https://docs.docker.com/reference/cli/docker/build/), [docker push](https://docs.docker.com/reference/cli/docker/push/)
+- Jenkins Shared Library repo: [github.com/Ryans-cloud-lab/jenkins-shared-library](https://github.com/Ryans-cloud-lab/jenkins-shared-library)
