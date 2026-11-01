@@ -76,7 +76,7 @@ Branch **`jenkins-shared-lib`** wires the external shared library into the Pipel
 
 ### Automatic triggers
 
-The Jenkins job is configured to run on pushes to the application repository using a **GitHub webhook** . I ConfigureD the webhook in the GitHub repo settings and the corresponding trigger in the Jenkins job / multibranch project.
+The Jenkins job is configured to run on pushes to the application repository using a **GitHub webhook** . I Configured the webhook in the GitHub repo settings and the corresponding trigger in the Jenkins job / multibranch project.
 
 To avoid an infinite loop when the pipeline **commits version bumps**, either:
 
