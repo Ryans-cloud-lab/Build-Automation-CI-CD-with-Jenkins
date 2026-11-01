@@ -68,7 +68,7 @@ On branch **`main`**, multiple files document the course progression without rep
 | File | Illustrates |
 |------|-------------|
 | [Jenkinsfile](./java-maven-app/Jenkinsfile) | Full CI pipeline with versioning (evolved alongside `jenkins-jobs`) |
-| [Jenkinsfile-syntax](./java-maven-app/Jenkinsfile-syntax) | Parameters, `when` conditions, and user **input** for environment selection |
+| [Jenkinsfile-syntax](./java-maven-app/Jenkins-file-syntax) | Parameters, `when` conditions, and user **input** for environment selection |
 | Embedded `jenkins-shared-library/` (on `main` only) | Local copy of shared library structure while learning |
 
 Branch **`jenkins-shared-lib`** wires the external shared library into the Pipeline (`buildJar()`, `dockerLogin()`, `dockerPush()`, etc.).
