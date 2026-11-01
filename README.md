@@ -22,7 +22,7 @@ This repository contains a Java Maven application (java-maven-app) with a Jenkin
 
 The setup mirrors a typical company workflow: a dedicated Jenkins server, credentials for external systems kept in Jenkins, pipeline as code in Git, images published to a registry, and builds triggered automatically by code changes.
 
-The sample application and starting pipeline come from the bootcamp. I set up the Jenkins server, adapted the pipeline and shared library to my own accounts and repository layout, and documented the problems I solved along the way.
+I used a sample application and starting pipeline come from an open-source website. I set up the Jenkins server, adapted the pipeline and shared library to my own accounts and repository layout and documented the problems I solved along the way.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ Before reproducing this project on a new Jenkins server or cloning for local dev
 - **Restart policy** unless-stopped, so Jenkins comes back on its own after a plugin restart or a server reboot
 - **Docker** made available to the Jenkins container through the host's Docker socket, so pipelines can build and push images
 - **Maven** configured as a Jenkins-managed tool; Node.js and npm installed inside the container
-- ###### Port 8080 open in the DigitalOcean firewall for the Jenkins UI and GitHub webhooks
+- **Port 8080 open in the DigitalOcean firewall for the Jenkins UI and GitHub webhooks**
 
 ### CI pipeline (end state on `jenkins-jobs`)
 
@@ -63,7 +63,7 @@ The active pipeline in [java-maven-app/Jenkinsfile](./java-maven-app/Jenkinsfile
 
 ### Jenkins job types and learning artifacts
 
-On branch **`main`**, multiple files document the course progression without replacing the live pipeline on `jenkins-jobs`:
+On **`main`** branch, multiple files document the course progression without replacing the live pipeline on `jenkins-jobs`:
 
 | File | Illustrates |
 |------|-------------|
@@ -73,12 +73,10 @@ On branch **`main`**, multiple files document the course progression without rep
 
 Branch **`jenkins-shared-lib`** wires the external shared library into the Pipeline (`buildJar()`, `dockerLogin()`, `dockerPush()`, etc.).
 
-Branch **`feature/payment`** supports **Multibranch Pipeline** demos (separate branch for branch-specific behavior).
-
 
 ### Automatic triggers
 
-The Jenkins job is configured to run on pushes to the application repository using a **GitHub webhook** (course material uses GitLab; this project uses **GitHub**). Configure the webhook in the GitHub repo settings and the corresponding trigger in the Jenkins job / multibranch project.
+The Jenkins job is configured to run on pushes to the application repository using a **GitHub webhook** . I ConfigureD the webhook in the GitHub repo settings and the corresponding trigger in the Jenkins job / multibranch project.
 
 To avoid an infinite loop when the pipeline **commits version bumps**, either:
 
@@ -94,9 +92,9 @@ To avoid an infinite loop when the pipeline **commits version bumps**, either:
 | **`main`** | Default branch: multiple Jenkinsfile variants, and (historically) an embedded shared-library tree for learning |
 | **`jenkins-jobs`** | **Primary branch for the live Jenkins job** — contains the Jenkinsfile used day-to-day; receives automated `ci: version bump` commits from the pipeline |
 | **`jenkins-shared-lib`** | Pipeline that consumes the external Jenkins Shared Library from GitHub |
-| **`feature/payment`** | Feature branch for Multibranch Pipeline demonstrations |
 
-When cloning or configuring Jenkins SCM, point the **Multibranch** or **Pipeline** job at **`jenkins-jobs`** unless you are reproducing a specific project from `main`.
+
+When I cloned or configured Jenkins SCM, I pointed the **Multibranch** or **Pipeline** job at **`jenkins-jobs`** unless you are reproducing a specific project from `main`.
 
 ---
 
@@ -111,7 +109,6 @@ devops-08-automation-ci-cd-with-jenkins/
 │   ├── Jenkinsfile             # Pipeline definition (branch-dependent)
 │   ├── Jenkinsfile-pipeline    # Pipeline + script.groovy (main)
 │   ├── Jenkinsfile-syntax      # Parameters, when, input (main)
-│   ├── Jenkinsfile-condition   # Branch conditions (main)
 │   └── script.groovy           # Local Groovy helpers (buildJar, buildImage, …)
 ```
 
@@ -192,3 +189,10 @@ java -jar target/java-maven-app-*.jar
 ```
 
 ---
+## References
+
+- README structure guidance: [Make a README](https://www.makeareadme.com/)
+- Jenkins: [Pipeline](https://www.jenkins.io/doc/book/pipeline/), [Shared Libraries](https://www.jenkins.io/doc/book/pipeline/shared-libraries/), [Credentials](https://www.jenkins.io/doc/book/using/using-credentials/)
+- GitHub: [Managing personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+- Docker: [docker build](https://docs.docker.com/reference/cli/docker/build/), [docker push](https://docs.docker.com/reference/cli/docker/push/)
+- Jenkins Shared Library repo: [github.com/Ryans-cloud-lab/jenkins-shared-library](https://github.com/Ryans-cloud-lab/jenkins-shared-library)
