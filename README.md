@@ -91,12 +91,12 @@ To avoid an infinite loop when the pipeline **commits version bumps**, either:
 
 | Branch | Role |
 |--------|------|
-| **`main`** | Default branch: course exercises, multiple Jenkinsfile variants, and (historically) an embedded shared-library tree for learning |
+| **`main`** | Default branch: multiple Jenkinsfile variants, and (historically) an embedded shared-library tree for learning |
 | **`jenkins-jobs`** | **Primary branch for the live Jenkins job** — contains the Jenkinsfile used day-to-day; receives automated `ci: version bump` commits from the pipeline |
 | **`jenkins-shared-lib`** | Pipeline that consumes the external Jenkins Shared Library from GitHub |
 | **`feature/payment`** | Feature branch for Multibranch Pipeline demonstrations |
 
-When cloning or configuring Jenkins SCM, point the **Multibranch** or **Pipeline** job at **`jenkins-jobs`** unless you are reproducing a specific exercise from `main`.
+When cloning or configuring Jenkins SCM, point the **Multibranch** or **Pipeline** job at **`jenkins-jobs`** unless you are reproducing a specific project from `main`.
 
 ---
 
@@ -113,8 +113,6 @@ devops-08-automation-ci-cd-with-jenkins/
 │   ├── Jenkinsfile-syntax      # Parameters, when, input (main)
 │   ├── Jenkinsfile-condition   # Branch conditions (main)
 │   └── script.groovy           # Local Groovy helpers (buildJar, buildImage, …)
-├── freestyle-build.sh          # Freestyle job helper (repo root on jenkins-jobs)
-└── nodesource_setup.sh         # Optional Node.js setup on the agent
 ```
 
 The Docker image is built from [java-maven-app/Dockerfile](./java-maven-app/Dockerfile) after `mvn package` produces the JAR under `target/`.
